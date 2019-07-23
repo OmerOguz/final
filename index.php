@@ -22,44 +22,32 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+	<body>
+
 	<div class="header">
-		<h2>Home Page</h2>
+		<h2>appointment</h2>
 	</div>
-	<div class="content">
+	
+	<form method="post" action="index.php">
 
-		<!-- notification message -->
-		<?php if (isset($_SESSION['success'])) :
-		
+		<?php include('errors.php'); ?>
 
-			?>
-			
-			<?php 
-			$db = mysqli_connect('localhost', 'besafepanel_Forum', '123qweasd', 'besafepanel_Forum_Login');
-		$query="Select name From users where username='$username'";
-		$query2="Select surname From users where username='$username'";
-		$name=mysqli_query($db, $query);
-        $name=mysqli_query($db, $query2);
-			?>
-			<div class="error success" >
-				<h3>
-					<?php 
-						echo $_SESSION['success']; 
-						unset($_SESSION['success']);
-					?>
-				</h3>
-			</div>
-		<?php endif ?>
+		<div class="input-group">
+			<label>appointment Name</label>
+			<input type="text" name="Name" >
+		</div>
+		<div class="input-group">
+			<label>appointment Location/Hour</label>
+			<input type="password" name="Location">
+		</div>
+		<div class="input-group">
+			<button type="submit" class="btn" name="Create appointment ">Create</button>
+		</div>
+			</form>
 
-		<!-- logged in user information -->
-		<?php  if (isset($_SESSION['username'])) : ?>
-			<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-			
-			<p>Your Name is  <strong><?php echo $name; ?></strong></p>
-			
-			<p>Your Surname is <strong><?php echo $surname; ?></strong></p>
-			<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
-		<?php endif ?>
-	</div>
+
+</body>
+
 		
 </body>
 </html>
